@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STS Robotic Sumo Mission | เปิดรับสมัคร</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,600;1,800&family=Sarabun:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070c1f;--panel:#0d1636;--blue:#2f7bff;--orange:#ff7a1a;--gold1:#ffe58a;--gold2:#f5a300;--red:#c1121f;--ink:#eef2ff;--mute:#9aa6d6;--line:#26325f}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font:17px/1.65 'Sarabun',sans-serif;
+ background:
+  radial-gradient(circle at 50% 0,transparent 0 360px,#ffffff0a 361px 364px,transparent 365px),
+  linear-gradient(115deg,rgba(47,123,255,.30) 0 16%,transparent 16.1%),
+  linear-gradient(245deg,rgba(255,122,26,.26) 0 16%,transparent 16.1%),
+  var(--bg)}
+h1,h2,h3,.k{font-family:'Kanit',sans-serif;margin:0}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+.demo{background:var(--gold2);color:#3a2600;text-align:center;font-size:14px;padding:4px}
+
+/* ---------- หัวเรื่อง ---------- */
+.top{text-align:center;padding-top:26px}
+.top img{width:min(330px,80%);filter:drop-shadow(0 6px 0 #0006)}
+.ribbon{display:inline-block;margin:14px 0 0;padding:6px 30px;font:600 clamp(15px,3vw,19px) 'Kanit';color:#1b2250;background:#e9ecf8;
+ clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 50%,calc(100% - 14px) 100%,14px 100%,0 50%)}
+.t1{font:600 clamp(22px,5vw,34px) 'Kanit';margin-top:16px;letter-spacing:.02em}
+.t2,.t3{font:italic 800 clamp(46px,11.5vw,100px)/.98 'Kanit';-webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 5px 0 #000a);transform:skew(-4deg)}
+.t2{background-image:linear-gradient(#fff,#a9b2d4)}
+.t3{background-image:linear-gradient(var(--gold1),var(--gold2))}
+
+/* ---------- รูปสนาม ----------
+   ใส่ไฟล์ arena.jpg ไว้โฟลเดอร์เดียวกัน หรือเปลี่ยน url(arena.jpg) เป็น data:image/jpeg;base64,... ของเดิม */
+.arena{position:relative;margin:22px auto 0;height:clamp(130px,33vw,335px);background:url(arena.jpg) center/cover;
+ border:3px solid #ffffff22;border-radius:10px;box-shadow:6px 6px 0 #000a;overflow:hidden}
+.arena:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,#070c1fcc)}
+
+/* ---------- วันที่ / จำนวน ---------- */
+.date{display:block;text-align:center;margin:18px auto 0;max-width:760px;padding:8px 14px;font:800 clamp(20px,4.6vw,34px) 'Kanit';
+ background:var(--red);border:2px dashed #ffffff66;border-radius:6px;box-shadow:0 6px 0 #5a0509}
+.count{text-align:center;margin-top:18px;font:800 clamp(24px,5.6vw,44px)/1.15 'Kanit'}
+.count b{font-size:1.5em;color:var(--gold1);text-shadow:3px 3px 0 #000a}
+.pill{display:inline-block;margin-top:10px;padding:3px 22px;font:600 clamp(15px,3.4vw,21px) 'Kanit';color:#3a2600;background:var(--gold2);
+ transform:skew(-8deg);border-radius:3px;box-shadow:3px 3px 0 #000a}
+
+/* ---------- ตัวเลขสรุป ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 12px}
+.stat{text-align:center;padding:12px 6px 10px;background:var(--panel);border:1px solid var(--line);border-top:5px solid var(--blue);border-radius:6px}
+.stat:nth-child(2){border-top-color:#35d287}
+.stat:nth-child(3){border-top-color:var(--orange)}
+.stat .k{font-size:clamp(32px,7vw,50px);font-weight:800;line-height:1}
+.stat span{font-size:14px;color:var(--mute)}
+.bar{height:16px;border-radius:3px;background:#141d45;overflow:hidden;position:relative}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--orange));transition:width .6s}
+.bar:after{content:"";position:absolute;inset:0;
+ background:repeating-linear-gradient(90deg,transparent 0 calc(100%/15 - 3px),var(--bg) calc(100%/15 - 3px) calc(100%/15))}
+
+/* ---------- ปุ่มลงทะเบียน ---------- */
+.cta{text-align:center;margin:30px 0 12px}
+.go{font:800 clamp(22px,5vw,30px) 'Kanit';padding:14px 56px;border:0;border-radius:10px;color:#2b1a00;cursor:pointer;
+ background:linear-gradient(var(--gold1),var(--gold2));box-shadow:0 7px 0 #9a6200,0 14px 22px #0008;transition:transform .1s,box-shadow .1s}
+.go:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 9px 0 #9a6200,0 16px 24px #0008}
+.go:active:not(:disabled){transform:translateY(5px);box-shadow:0 2px 0 #9a6200,0 4px 8px #0008}
+.go:disabled{background:#4b5380;color:#c9cef0;box-shadow:0 5px 0 #2d3358;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold1);outline-offset:2px}
+
+/* ---------- กล่องข้อมูล ---------- */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:34px 0}
+@media(max-width:760px){.info{grid-template-columns:1fr}}
+.box{padding:16px 20px 14px;background:var(--panel);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:6px;box-shadow:5px 5px 0 #0007}
+.box h3{font-size:20px;margin-bottom:6px;color:#fff}
+.box ul{list-style:none;margin:0;padding:0}
+.box li{padding-left:24px;position:relative;margin:7px 0}
+.box li:before{content:"";position:absolute;left:3px;top:.62em;width:9px;height:9px;background:var(--gold2);transform:rotate(45deg)}
+
+/* ---------- รายชื่อทีม ---------- */
+h2.sec{font-size:28px;margin:12px 0 2px}
+h2.sec:before{content:"";display:inline-block;width:10px;height:.85em;margin-right:12px;background:var(--orange);transform:skew(-15deg);vertical-align:-.08em}
+.sub{margin:0 0 14px;color:var(--mute);font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:14px;padding-bottom:54px}
+.slot{padding:12px 16px 14px;min-height:178px;background:var(--panel);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:8px;box-shadow:4px 4px 0 #0007}
+.slot .no{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;font:800 italic 32px/1 'Kanit';color:var(--c)}
+.slot .no span{font:600 12px 'Kanit';letter-spacing:.2em;opacity:.8}
+.slot .p{margin:2px 0 0;font-size:16px}
+.slot .p b{font-weight:600}
+.slot .en{margin:0 0 2px;font-size:14px;color:var(--mute)}
+.slot .chip{display:inline-block;margin-left:4px;padding:0 9px;border-radius:99px;background:#ffffff12;border:1px solid var(--line);font-size:12.5px;color:var(--gold1);white-space:nowrap}
+.slot .vs{display:flex;align-items:center;gap:8px;margin:8px 0;font:600 12px 'Kanit';color:var(--mute)}
+.slot .vs:before,.slot .vs:after{content:"";flex:1;height:1px;background:var(--line)}
+.slot.empty{--c:#5c689e;background:transparent;border:2px dashed var(--line);border-left:2px dashed var(--line);box-shadow:none;
+ display:flex;flex-direction:column;justify-content:center;color:#6f7bb0}
+
+/* ---------- ฟอร์ม ---------- */
+dialog{width:min(560px,94vw);max-height:94vh;overflow:auto;padding:22px;border:0;border-top:7px solid var(--gold2);border-radius:12px;color:var(--ink);background:var(--panel);box-shadow:8px 8px 0 #000a,0 0 80px #000}
+dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}
+dialog h2{font-size:26px;margin-bottom:2px}
+fieldset{margin:18px 0 0;padding:6px 14px 14px;border:1px solid var(--line);border-radius:8px}
+legend{font:800 italic 17px 'Kanit';padding:1px 14px;margin-left:-4px;transform:skew(-8deg);border-radius:3px}
+.me legend{background:var(--orange);color:#1b1000}
+.pt legend{background:#6fb1ff;color:#06143a}
+label{display:block;font-size:15px;margin-top:9px;color:#cfd6f5}
+input,select{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;background:#050a1e;color:var(--ink)}
+input:focus,select:focus{border-color:var(--gold2)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lang{font-size:13px;color:var(--mute);margin:12px 0 0}
+.btns{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-top:20px}
+.btns button{font:600 18px 'Kanit';padding:12px;border-radius:8px;border:0;cursor:pointer;transition:transform .1s,box-shadow .1s}
+.cancel{background:#1a2455;color:var(--ink);box-shadow:0 4px 0 #0c1233}
+.submit{background:linear-gradient(var(--gold1),var(--gold2));color:#2b1a00;box-shadow:0 4px 0 #9a6200}
+.btns button:active:not(:disabled){transform:translateY(3px);box-shadow:none}
+.submit:disabled{background:#4b5380;color:#c9cef0;box-shadow:0 4px 0 #2d3358;cursor:not-allowed}
+#msg{margin-top:12px;padding:10px 12px;border-radius:6px;font-size:15px;display:none}
+#msg.err{display:block;background:#4a1216;color:#ffb4b4;border-left:4px solid #ff5a5a}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#14663a;color:#fff;padding:12px 20px;border-radius:8px;display:none;z-index:9;font-weight:600;max-width:90vw;box-shadow:4px 4px 0 #0008}
+footer{text-align:center;font-size:14px;color:var(--mute);opacity:.7;padding-bottom:26px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="demo" class="demo" hidden>โหมดทดลอง: ยังไม่ได้ใส่ API_URL ข้อมูลจะไม่ถูกบันทึกลง Google Sheet</div>
+<div class="wrap">
+  <header class="top">
+    <!-- ใส่ไฟล์ logo.png ไว้โฟลเดอร์เดียวกัน หรือเปลี่ยน src เป็น data:image/png;base64,... ของเดิม -->
+    <img src="logo.png" alt="Go Robot และโรงเรียนทานตะวันไตรภาษา">
+    <div class="ribbon">จัดโดย โรงเรียนทานตะวันไตรภาษา ร่วมกับ Go Robot</div>
+    <h1 class="t1">เปิดรับสมัครผู้เข้าแข่งขัน</h1>
+    <div class="t2">STS ROBOTIC</div>
+    <div class="t3">SUMO MISSION</div>
+  </header>
+  <div class="arena" role="img" aria-label="หุ่นยนต์ซูโม่ EV3 สองตัวเผชิญหน้ากัน ตรงกลางเป็นป้าย ฟรี ไม่มีค่าใช้จ่าย"></div>
+  <div class="date">รับสมัคร 20–27 พฤศจิกายน 2569</div>
+  <div class="count">จำนวน <b>30 คน</b> (15 ทีม)<br><span class="pill">ทีมละ 2 คน • นักเรียนจับคู่กันเอง</span></div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">15</div><span>ทีมที่รับทั้งหมด</span></div>
+    <div class="stat"><div class="k" id="nReg" style="color:#6fe3a1">0</div><span>สมัครแล้ว</span></div>
+    <div class="stat"><div class="k" id="nLeft" style="color:var(--orange)">15</div><span>เหลืออีก</span></div>
+  </div>
+  <div class="bar"><i id="fill"></i></div>
+
+  <div class="cta"><button class="go" id="open">ลงทะเบียน</button></div>
+
+  <div class="info">
+    <div class="box" style="--c:#2f7bff"><h3>คุณสมบัติผู้สมัคร</h3><ul>
+      <li>สมาชิกชมรม STS Robotic Class Lv.1–Lv.3</li><li>หรือสมาชิกชมรม STS Innovation Club</li></ul></div>
+    <div class="box" style="--c:#ff7a1a"><h3>สิ่งที่ผู้เข้าแข่งขันจะได้รับ</h3><ul>
+      <li>ทุกคนได้รับใบประกาศนียบัตรเข้าร่วมการแข่งขัน</li><li>ผู้ชนะอันดับ 1, 2 และ 3 ได้รับใบประกาศนียบัตรแสดงอันดับ</li></ul></div>
+  </div>
+
+  <h2 class="sec">รายชื่อทีมที่สมัครแล้ว</h2>
+  <p class="sub">ช่องว่างคือที่นั่งที่ยังเปิดอยู่</p>
+  <div class="grid" id="grid"></div>
+  <footer>GO Robot · Robotics and Coding · โรงเรียนทานตะวันไตรภาษา</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dh">
+  <h2 id="dh">ลงทะเบียนเข้าแข่งขัน</h2>
+  <p class="sub">กรอกข้อมูลของน้องและเพื่อนคู่ทีม 1 ทีมสมัครเพียงครั้งเดียว</p>
+  <form id="f" autocomplete="off">
+    <fieldset class="me" id="k1"></fieldset>
+    <fieldset class="pt" id="k2"></fieldset>
+    <div id="msg" role="alert"></div>
+    <div class="btns"><button type="button" class="cancel" id="cancel">ยกเลิก</button><button type="submit" class="submit" id="btn">ลงทะเบียน</button></div>
+  </form>
+</dialog>
+<div id="toast" role="status"></div>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwSDUdwTE9rlFKVFl3GhTBJdcUHgiJ475TCEMFykLo5PrrsJ2z2PcSUMCvJm-opDeO7/exec";
+const MAX = 15;
+const COLORS = ["#2f7bff","#ff7a1a","#ff3da8","#ffc21f","#35c6ff","#2fd27a"];
+const EPRE = {"ด.ช.":"Master","ด.ญ.":"Miss"};
+const F = ["pre","fn","ln","nick","efn","eln","enick","cls","room"];
+let teams = [];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const opts = a => '<option value="">เลือก</option>' + a.map(v => `<option>${v}</option>`).join("");
+const TH = 'pattern="[ก-๙ ]+" title="กรอกเป็นภาษาไทย"', EN = 'pattern="[A-Za-z .\'\\-]+" title="Please use English letters"';
+
+function kidForm(i, title){
+  $("k"+i).innerHTML = `<legend>${title}</legend>
+    <label for="pre${i}">คำนำหน้า</label><select id="pre${i}" required>${opts(["ด.ช.","ด.ญ."])}</select>
+    <div class="row"><div><label for="fn${i}">ชื่อ</label><input id="fn${i}" required maxlength="40" ${TH}></div>
+    <div><label for="ln${i}">นามสกุล</label><input id="ln${i}" required maxlength="40" ${TH}></div></div>
+    <label for="nick${i}">ชื่อเล่น</label><input id="nick${i}" required maxlength="20" ${TH}>
+    <p class="lang">ภาษาอังกฤษ (English)</p>
+    <div class="row"><div><label for="efn${i}">First name</label><input id="efn${i}" required maxlength="40" ${EN}></div>
+    <div><label for="eln${i}">Last name</label><input id="eln${i}" required maxlength="40" ${EN}></div></div>
+    <label for="enick${i}">Nickname</label><input id="enick${i}" required maxlength="20" ${EN}>
+    <div class="row"><div><label for="cls${i}">Grade</label><select id="cls${i}" required>${opts([1,2,3,4,5,6])}</select></div>
+    <div><label for="room${i}">Class</label><select id="room${i}" required>${opts([1,2,3,4,5])}</select></div></div>`;
+}
+kidForm(1, "ข้อมูลของน้อง"); kidForm(2, "ข้อมูลของคู่ในทีม");
+
+function kid(t, i){
+  return `<p class="p"><b>${esc(t["pre"+i])} ${esc(t["fn"+i])} ${esc(t["ln"+i])}</b> (${esc(t["nick"+i])})
+    <small class="chip">Grade ${esc(t["cls"+i])} · Class ${esc(t["room"+i])}</small></p>
+    <p class="en">${esc(t["epre"+i])} ${esc(t["efn"+i])} ${esc(t["eln"+i])} (${esc(t["enick"+i])})</p>`;
+}
+
+function render(){
+  const n = teams.length, left = Math.max(0, MAX - n);
+  $("nReg").textContent = n; $("nLeft").textContent = left;
+  $("fill").style.width = (n / MAX * 100) + "%";
+  const open = $("open"); open.disabled = !left; open.textContent = left ? "ลงทะเบียน" : "ครบ 15 ทีมแล้ว";
+  let h = "";
+  for (let i = 0; i < MAX; i++){
+    const t = teams[i], no = `<div class="no"><span>TEAM</span>${String(i+1).padStart(2,"0")}</div>`;
+    if (t) h += `<div class="slot" style="--c:${COLORS[i % 6]}">${no}${kid(t,1)}<p class="vs">คู่กับ</p>${kid(t,2)}</div>`;
+    else h += `<div class="slot empty">${no}<div>ว่าง</div></div>`;
+  }
+  $("grid").innerHTML = h;
+}
+function err(text){ const m = $("msg"); m.className = text ? "err" : ""; m.textContent = text; }
+function toast(text){ const t = $("toast"); t.textContent = text; t.style.display = "block"; setTimeout(() => t.style.display = "none", 4500); }
+
+async function load(){
+  if (!API_URL){ $("demo").hidden = false; render(); return; }
+  try{ const d = await (await fetch(API_URL + "?action=list")).json(); teams = d.teams || []; }
+  catch(e){ toast("โหลดรายชื่อไม่สำเร็จ กรุณารีเฟรชหน้า"); }
+  render();
+}
+
+$("open").onclick = () => { err(""); $("dlg").showModal(); };
+$("cancel").onclick = () => $("dlg").close();
+
+$("f").addEventListener("submit", async e => {
+  e.preventDefault();
+  const t = {};
+  for (const i of [1,2]){ for (const k of F) t[k+i] = $(k+i).value.trim(); t["epre"+i] = EPRE[t["pre"+i]] || ""; }
+  const same = t.fn1 === t.fn2 && t.ln1 === t.ln2;
+  if (same) return err("ชื่อของน้องสองคนซ้ำกัน กรุณาตรวจสอบอีกครั้ง");
+  if (Object.values(t).some(v => !v)) return err("กรุณากรอกข้อมูลให้ครบทุกช่อง");
+  $("btn").disabled = true; $("btn").textContent = "กำลังส่ง...";
+  try{
+    if (!API_URL){ if (teams.length >= MAX) throw new Error("ครบ 15 ทีมแล้ว"); teams.push(t); }
+    else{
+      const d = await (await fetch(API_URL, { method:"POST", body: JSON.stringify(t) })).json();
+      if (!d.ok) throw new Error(d.error || "ส่งไม่สำเร็จ");
+      teams = d.teams;
+    }
+    $("f").reset(); err(""); $("dlg").close(); toast("ลงทะเบียนสำเร็จ ชื่อของน้องอยู่ในรายชื่อทีมแล้ว");
+  }catch(x){ err(x.message); await load(); }
+  $("btn").disabled = false; $("btn").textContent = "ลงทะเบียน"; render();
+});
+
+load();
+setInterval(() => { if (API_URL && !$("dlg").open) load(); }, 30000);
+</script>
+</body>
+</html>
