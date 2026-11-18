@@ -73,22 +73,42 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 .box li{padding-left:24px;position:relative;margin:7px 0}
 .box li:before{content:"";position:absolute;left:3px;top:.62em;width:9px;height:9px;background:var(--gold2);transform:rotate(45deg)}
 
-/* ---------- รายชื่อทีม ---------- */
-h2.sec{font-size:28px;margin:12px 0 2px}
-h2.sec:before{content:"";display:inline-block;width:10px;height:.85em;margin-right:12px;background:var(--orange);transform:skew(-15deg);vertical-align:-.08em}
-.sub{margin:0 0 14px;color:var(--mute);font-size:15px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:14px;padding-bottom:54px}
-.slot{padding:12px 16px 14px;min-height:178px;background:var(--panel);border:1px solid var(--line);border-left:7px solid var(--c);border-radius:8px;box-shadow:4px 4px 0 #0007}
-.slot .no{display:flex;align-items:baseline;gap:8px;margin-bottom:4px;font:800 italic 32px/1 'Kanit';color:var(--c)}
-.slot .no span{font:600 12px 'Kanit';letter-spacing:.2em;opacity:.8}
-.slot .p{margin:2px 0 0;font-size:16px}
-.slot .p b{font-weight:600}
-.slot .en{margin:0 0 2px;font-size:14px;color:var(--mute)}
-.slot .chip{display:inline-block;margin-left:4px;padding:0 9px;border-radius:99px;background:#ffffff12;border:1px solid var(--line);font-size:12.5px;color:var(--gold1);white-space:nowrap}
-.slot .vs{display:flex;align-items:center;gap:8px;margin:8px 0;font:600 12px 'Kanit';color:var(--mute)}
-.slot .vs:before,.slot .vs:after{content:"";flex:1;height:1px;background:var(--line)}
-.slot.empty{--c:#5c689e;background:transparent;border:2px dashed var(--line);border-left:2px dashed var(--line);box-shadow:none;
- display:flex;flex-direction:column;justify-content:center;color:#6f7bb0}
+/* ---------- รายชื่อทีม: การ์ดแบบใหม่ ---------- */
+.team-board-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:20px 0 8px}
+h2.sec{font-size:clamp(24px,4vw,31px);margin:0;line-height:1.35}
+h2.sec:before{content:"";display:inline-block;width:9px;height:.84em;margin-right:12px;background:linear-gradient(var(--gold1),var(--orange));border-radius:3px;transform:skew(-13deg);vertical-align:-.08em;box-shadow:0 0 16px #ff981d55}
+.roster-live{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:#123c314d;border:1px solid #37d79666;color:#9df8c8;font:600 13px 'Kanit',sans-serif;white-space:nowrap}
+.roster-live:before{content:"";width:8px;height:8px;flex:none;border-radius:50%;background:#4de6a2;box-shadow:0 0 0 4px #4de6a222,0 0 12px #4de6a2}
+.sub{margin:0 0 18px;color:var(--mute);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px;padding-bottom:54px}
+.slot{--c:#4d91ff;position:relative;isolation:isolate;overflow:hidden;padding:17px 17px 18px;min-height:252px;background:linear-gradient(150deg,#172650 0%,#0d1635 54%,#0b122c 100%);border:1px solid #394976;border-radius:18px;box-shadow:0 10px 28px #0005, inset 0 1px 0 #ffffff12;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.slot::before{content:"";position:absolute;z-index:-1;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--c),#ffffff80 58%,transparent);opacity:.95}
+.slot::after{content:"";position:absolute;z-index:-1;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,var(--c),transparent 70%);opacity:.10;pointer-events:none}
+.slot:not(.empty):hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 16px 34px #0008,0 0 0 1px #ffffff0d}
+.team-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
+.team-id{display:flex;align-items:baseline;gap:7px;color:#fff;font:800 29px/1 'Kanit',sans-serif}
+.team-id .team-word{font:600 12px 'Kanit',sans-serif;letter-spacing:.17em;color:#9daed6}
+.team-id .team-number{font:800 30px/1 'Kanit',sans-serif;color:var(--c);letter-spacing:.02em}
+.team-status{display:inline-flex;align-items:center;gap:6px;max-width:100%;padding:4px 10px;border-radius:999px;color:#a9f8cb;background:#15483466;border:1px solid #44d68b55;font:600 12px 'Kanit',sans-serif;white-space:nowrap}
+.team-status:before{content:"✓";display:grid;place-items:center;width:14px;height:14px;background:#30c880;color:#082518;border-radius:50%;font:bold 10px Arial,sans-serif}
+.player-card{display:flex;align-items:center;gap:11px;padding:11px 12px;min-height:75px;background:linear-gradient(110deg,#ffffff0c,#ffffff03);border:1px solid #ffffff17;border-radius:12px}
+.player-avatar{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:12px;color:#fff;background:linear-gradient(145deg,var(--c),#33416d);box-shadow:inset 0 1px 0 #ffffff55,0 4px 10px #0004;font:700 16px 'Kanit',sans-serif}
+.player-content{min-width:0;flex:1}
+.player-name{font:600 clamp(17px,2.5vw,21px)/1.35 'Kanit',sans-serif;color:#fff;overflow-wrap:anywhere}
+.player-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.player-meta span{font:600 11px 'Kanit',sans-serif;padding:2px 8px;border-radius:6px;color:#cbdbff;background:#2e427a80;border:1px solid #7ea7ff22}
+.player-meta span:last-child{color:#ffe0a4;background:#7c532933;border-color:#ffc17633}
+.partner-line{display:flex;align-items:center;gap:10px;margin:5px 5px;color:#8796c7;text-align:center;font:500 10px 'Kanit',sans-serif;letter-spacing:.1em}
+.partner-line:before,.partner-line:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#455687,transparent)}
+.slot.empty{--c:#53638c;background:linear-gradient(145deg,#101a39a8,#0a1229a8);border:1.5px dashed #37456e;box-shadow:none;min-height:252px}
+.slot.empty::before{opacity:.2}
+.slot.empty::after{opacity:.04}
+.slot.empty .team-id .team-number{color:#7585af}
+.empty-body{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:164px;gap:5px;text-align:center}
+.empty-icon{width:54px;height:54px;display:grid;place-items:center;border:1.5px dashed #53638c;border-radius:17px;color:#8d9cc6;font:300 32px 'Kanit',sans-serif;background:#ffffff05}
+.empty-body strong{font:600 19px 'Kanit',sans-serif;color:#a9b7d9}
+.empty-body small{font-size:12px;color:#6f7ea7}
+@media(max-width:540px){.team-board-head{align-items:flex-start}.grid{gap:12px}.slot{padding:15px;min-height:235px}.player-card{min-height:70px}.slot.empty{min-height:235px}.empty-body{min-height:150px}}
 
 /* ---------- ฟอร์ม ---------- */
 dialog{width:min(560px,94vw);max-height:94vh;overflow:auto;padding:22px;border:0;border-top:7px solid var(--gold2);border-radius:12px;color:var(--ink);background:var(--panel);box-shadow:8px 8px 0 #000a,0 0 80px #000}
@@ -143,12 +163,17 @@ footer{text-align:center;font-size:14px;color:var(--mute);opacity:.7;padding-bot
     <div class="box" style="--c:#2f7bff"><h3>คุณสมบัติผู้สมัคร</h3><ul>
       <li>สมาชิกชมรม STS Robotic Class Lv.1–Lv.3</li><li>หรือสมาชิกชมรม STS Innovation Club</li></ul></div>
     <div class="box" style="--c:#ff7a1a"><h3>สิ่งที่ผู้เข้าแข่งขันจะได้รับ</h3><ul>
-      <li>ทุกคนได้รับใบประกาศนียบัตรเข้าร่วมการแข่งขัน</li><li>ผู้ชนะอันดับ 1, 2 และ 3 ได้รับใบประกาศนียบัตรแสดงอันดับ</li></ul></div>
+      <li>ทุกคนได้รับใบประกาศนียบัตรเข้าร่วมการแข่งขัน</li><li>ผู้ชนะอันดับ 1, 2 และ 3 ได้รับเหรียญรางวัลเเละใบประกาศนียบัตรแสดงอันดับ</li></ul></div>
   </div>
 
-  <h2 class="sec">รายชื่อทีมที่สมัครแล้ว</h2>
-  <p class="sub">ช่องว่างคือที่นั่งที่ยังเปิดอยู่</p>
-  <div class="grid" id="grid"></div>
+  <section aria-labelledby="teamListTitle">
+    <div class="team-board-head">
+      <h2 class="sec" id="teamListTitle">รายชื่อทีมที่สมัครแล้ว</h2>
+      <span class="roster-live">อัปเดตข้อมูลอัตโนมัติ</span>
+    </div>
+    <p class="sub">แสดงเฉพาะชื่อเล่น ชั้น Grade และ Class ของผู้สมัคร · ช่องว่างคือทีมที่ยังเปิดรับ</p>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
   <footer>GO Robot · Robotics and Coding · โรงเรียนทานตะวันไตรภาษา</footer>
 </div>
 
@@ -191,22 +216,38 @@ function kidForm(i, title){
 }
 kidForm(1, "ข้อมูลของน้อง"); kidForm(2, "ข้อมูลของคู่ในทีม");
 
+// หน้าสาธารณะแสดงเฉพาะชื่อเล่น, Grade, Class
+// ชื่อจริง/นามสกุลยังคงถูกส่งไปยัง Google Sheet ตามระบบสมัครเดิม
 function kid(t, i){
-  return `<p class="p"><b>${esc(t["pre"+i])} ${esc(t["fn"+i])} ${esc(t["ln"+i])}</b> (${esc(t["nick"+i])})
-    <small class="chip">Grade ${esc(t["cls"+i])} · Class ${esc(t["room"+i])}</small></p>
-    <p class="en">${esc(t["epre"+i])} ${esc(t["efn"+i])} ${esc(t["eln"+i])} (${esc(t["enick"+i])})</p>`;
+  const nickname = esc(t["nick"+i] || "—");
+  const grade = esc(t["cls"+i] || "—");
+  const classroom = esc(t["room"+i] || "—");
+  return `<div class="player-card">
+    <div class="player-avatar" aria-hidden="true">0${i}</div>
+    <div class="player-content">
+      <div class="player-name">${nickname}</div>
+      <div class="player-meta"><span>Grade ${grade}</span><span>Class ${classroom}</span></div>
+    </div>
+  </div>`;
 }
 
 function render(){
   const n = teams.length, left = Math.max(0, MAX - n);
   $("nReg").textContent = n; $("nLeft").textContent = left;
-  $("fill").style.width = (n / MAX * 100) + "%";
+  $("fill").style.width = (Math.min(n, MAX) / MAX * 100) + "%";
   const open = $("open"); open.disabled = !left; open.textContent = left ? "ลงทะเบียน" : "ครบ 15 ทีมแล้ว";
   let h = "";
   for (let i = 0; i < MAX; i++){
-    const t = teams[i], no = `<div class="no"><span>TEAM</span>${String(i+1).padStart(2,"0")}</div>`;
-    if (t) h += `<div class="slot" style="--c:${COLORS[i % 6]}">${no}${kid(t,1)}<p class="vs">คู่กับ</p>${kid(t,2)}</div>`;
-    else h += `<div class="slot empty">${no}<div>ว่าง</div></div>`;
+    const t = teams[i];
+    const no = `<div class="team-id"><span class="team-word">TEAM</span><span class="team-number">${String(i+1).padStart(2,"0")}</span></div>`;
+    if (t) h += `<article class="slot" style="--c:${COLORS[i % 6]}">
+      <div class="team-header">${no}<span class="team-status">สมัครแล้ว</span></div>
+      ${kid(t,1)}<div class="partner-line">คู่ทีม</div>${kid(t,2)}
+    </article>`;
+    else h += `<article class="slot empty">
+      <div class="team-header">${no}</div>
+      <div class="empty-body"><div class="empty-icon" aria-hidden="true">+</div><strong>ยังว่าง</strong><small>เปิดรับสมัครทีมนี้</small></div>
+    </article>`;
   }
   $("grid").innerHTML = h;
 }
